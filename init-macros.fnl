@@ -847,7 +847,7 @@ macro checks for lists in bindings."}
     (each [i v (ipairs binding-vec)]
       (when (= 0 (% i 2))
         (let [key (. binding-vec (- i 1))
-              gs (gensym i)]
+              gs (gensym (tostring i))]
           (assert-compile (not (list? key)) "loop macro doesn't support multiple-value destructuring" key)
           ;; [sym1# sym2# etc...], for the function application below
           (table.insert gensyms gs)
