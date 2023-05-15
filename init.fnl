@@ -1485,7 +1485,7 @@ called. Early termination is supported via `reduced`.
 ```"
   [value]
   (doto (lazy.reduced value)
-    (-> getmetatable (tset :cljlib/deref #$.value))))
+    (-> getmetatable (tset :cljlib/deref #($:unbox)))))
 
 (defn reduced?
   "Returns true if `x` is the result of a call to reduced"
