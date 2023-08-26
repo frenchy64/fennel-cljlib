@@ -1,10 +1,9 @@
 (require-macros :fennel-test)
-(require-macros :init-macros)
+(require-macros (doto :cljlib require))
 (local (meta? fennel) (pcall require :fennel))
 
 (fn meta [x]
-  {:fnl/docstring (fennel.metadata:get x :fnl/docstring)
-   :fnl/arglist (fennel.metadata:get x :fnl/arglist)})
+  (fennel.metadata:get x))
 
 (deftest test-fn*
   (when meta?

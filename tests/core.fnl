@@ -1,7 +1,7 @@
-(import-macros clj :init-macros)
 (require-macros :fennel-test)
 
-(local core (require :init))
+(import-macros clj (doto :cljlib require))
+(local core (require :cljlib))
 
 (deftest test-equality
   (testing "comparing base-types"

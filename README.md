@@ -3,37 +3,29 @@
 Experimental library for the [Fennel](https://fennel-lang.org/) language, that adds many functions from [Clojure](https://clojure.org/)'s standard library.
 This is not a one-to-one port of Clojure `core`, because many Clojure features require certain facilities from the runtime.
 This library implements lazy sequences, transducers, immutable tables, sets and vectors, transients, and a lot of functions from the `core` namespace.
-Some semantics like concurrency, or dynamic scope is not supported by Lua runtime at all.
-Therefore, certain functions were altered to better suit the domain.
+Some semantics like dynamic scope and parallelism are not supported by Lua runtime at all.
+Therefore, certain functions were altered to better suit the domain or omitted entirely.
 
 ## Installation
 
-Clone library into your project or put it as a git submodule:
-
-    $ git clone --recursive https://gitlab.com/andreyorst/fennel-cljlib cljlib
-
-Make sure to set up the `FENNEL_PATH` and `LUA_PATH` environment variables to include the installation directory:
-
-    FENNEL_PATH="cljlib/?/init.fnl;$FENNEL_PATH"
-    LUA_PATH="cljlib/?/init.lua;$LUA_PATH"
-
-Or pass them via command line arguments:
-
-    $ fennel --add-fennel-path "cljlib/?/init.fnl" --add-package-path "cljlib/?/init.lua"
-
+Grab the [cljlb.fnl][1] file, and copy it somewhere into your project.
 Now you can require `:cljlib` from Fennel:
 
 ``` fennel
 (local clj (require :cljlib))
-(import-macros cljm :cljlib)
 ```
 
-Alternatively, precompile the library to make it load slightly faster:
+To use macros provided by the library, due to the implementation of how macros are stored an additional `require` step in the `import-macros` call is required:
 
-    $ cd cljlib; make
+```fennel
+(import-macros cljm (doto :cljlib require))
+```
 
-This will compile `init.fnl` into the `cljlib.lua` file, with all dependencies included.
-It is also possible to use this library directly from Lua this way.
+Alternatively, the library can be precompiled so it will load slightly faster:
+
+    $ fennel -c cljlib.fnl > cljlib.lua
+
+However, this way the macros provided by this library will not be available.
 
 ## Documentation
 
@@ -41,8 +33,17 @@ Documentation is auto-generated with [Fenneldoc](https://gitlab.com/andreyorst/f
 
 # Contributing
 
-Please make sure you've read [contribution guidelines](https://gitlab.com/andreyorst/fennel-cljlib/-/tree/master/CONTRIBUTING.md).
+Please make sure you've read [contribution guidelines][2].
+
+In order to work on the library, edit the `src/cljlib.fnl` file, then run the `build.fnl` script to produce a self-contained version of the library.
+
+Tests can be ran with
+
+    for test in tests/*.fnl; do fennel --metadata $test; done
+
+[1]: https://gitlab.com/andreyorst/fennel-cljlib/-/raw/master/cljlib.fnl
+[2]: https://gitlab.com/andreyorst/fennel-cljlib/-/tree/master/CONTRIBUTING.md
 
 <!--  LocalWords:  Lua submodule precompile cljlib docstring config
-      LocalWords:  namespace destructure runtime Clojure
+      LocalWords:  namespace destructure runtime Clojure precompiled
  -->
