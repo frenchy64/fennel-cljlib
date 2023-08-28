@@ -1,3 +1,5 @@
+;; -*- mode: fennel; -*- vi:ft=fennel
+
 (local t (require :fennel-test.fennel-test))
 
 (local test-modules

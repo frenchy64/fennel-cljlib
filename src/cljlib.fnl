@@ -2336,7 +2336,7 @@ Bear in mind, that since the sequence is lazy it should be realized or
 truncated before the file is closed:
 
 ``` fennel
-(let [lines (with-open [f (io.open \"init.fnl\" :r)]
+(let [lines (with-open [f (io.open \"cljlib.fnl\" :r)]
               (line-seq f))]
   ;; this will error because only first line was realized, but the
   ;; file was closed before the rest of lines were cached
@@ -2346,7 +2346,7 @@ truncated before the file is closed:
 Sequence is realized with `doall` before file was closed and can be shared:
 
 ``` fennel
-(let [lines (with-open [f (io.open \"init.fnl\" :r)]
+(let [lines (with-open [f (io.open \"cljlib.fnl\" :r)]
               (doall (line-seq f)))]
   (assert-is (pcall next lines)))
 ```

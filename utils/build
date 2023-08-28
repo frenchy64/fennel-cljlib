@@ -1,3 +1,5 @@
+;; -*- mode: fennel; -*- vi:ft=fennel
+
 (fn spit-lib [path to]
   (with-open [lib (io.open path)]
     (each [line (lib:lines)]
