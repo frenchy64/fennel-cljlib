@@ -29,11 +29,11 @@ However, this way the macros provided by this library will not be available.
 
 ## Documentation
 
-Documentation is auto-generated with [Fenneldoc](https://gitlab.com/andreyorst/fenneldoc) and can be found [here](https://gitlab.com/andreyorst/fennel-cljlib/-/tree/master/doc).
+Documentation is auto-generated with [Fenneldoc][2] and can be found [here][3].
 
 # Contributing
 
-Please make sure you've read [contribution guidelines][2].
+Please make sure you've read [contribution guidelines][4].
 
 In order to work on the library, edit the `src/cljlib.fnl` file, then run the following command in the project root:
 
@@ -46,7 +46,9 @@ Tests can be ran with:
     fennel utils/run-tests
 
 [1]: https://gitlab.com/andreyorst/fennel-cljlib/-/raw/master/cljlib.fnl
-[2]: https://gitlab.com/andreyorst/fennel-cljlib/-/tree/master/CONTRIBUTING.md
+[2]: https://gitlab.com/andreyorst/fenneldoc
+[3]: https://gitlab.com/andreyorst/fennel-cljlib/-/blob/master/doc/cljlib.md
+[4]: https://gitlab.com/andreyorst/fennel-cljlib/-/tree/master/CONTRIBUTING.md
 
 <!--  LocalWords:  Lua submodule precompile cljlib docstring config
       LocalWords:  namespace destructure runtime Clojure precompiled
