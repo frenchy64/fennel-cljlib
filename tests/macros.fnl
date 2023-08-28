@@ -1,4 +1,4 @@
-(require-macros :fennel-test)
+(require-macros (doto :fennel-test.fennel-test require))
 (require-macros (doto :cljlib require))
 (local (meta? fennel) (pcall require :fennel))
 

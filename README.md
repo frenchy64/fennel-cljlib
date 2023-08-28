@@ -35,11 +35,15 @@ Documentation is auto-generated with [Fenneldoc](https://gitlab.com/andreyorst/f
 
 Please make sure you've read [contribution guidelines][2].
 
-In order to work on the library, edit the `src/cljlib.fnl` file, then run the `build.fnl` script to produce a self-contained version of the library.
+In order to work on the library, edit the `src/cljlib.fnl` file, then run the following command in the project root:
 
-Tests can be ran with
+    fennel utils/build
 
-    for test in tests/*.fnl; do fennel --metadata $test; done
+This produces a self-contained version of the library with all dependencies properly included.
+
+Tests can be ran with:
+
+    fennel utils/run-tests
 
 [1]: https://gitlab.com/andreyorst/fennel-cljlib/-/raw/master/cljlib.fnl
 [2]: https://gitlab.com/andreyorst/fennel-cljlib/-/tree/master/CONTRIBUTING.md

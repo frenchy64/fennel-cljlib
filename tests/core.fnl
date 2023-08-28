@@ -1,4 +1,4 @@
-(require-macros :fennel-test)
+(require-macros (doto :fennel-test.fennel-test require))
 
 (import-macros clj (doto :cljlib require))
 (local core (require :cljlib))

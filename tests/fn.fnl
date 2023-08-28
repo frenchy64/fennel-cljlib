@@ -1,13 +1,13 @@
-(require-macros :fennel-test)
+(require-macros (doto :fennel-test.fennel-test require))
 (require-macros (doto :cljlib require))
 (local (meta? fennel) (pcall require :fennel))
 
 (fn meta [x]
   (fennel.metadata:get x))
 
-(deftest test-fn*
+(deftest test-defn
   (when meta?
-    (testing "fn* meta"
+    (testing "defn meta"
       (defn f
         "single arity"
         [x] x)
@@ -66,7 +66,7 @@
                               "([[{:a [a b c]}] d e])"]}
                (meta f)))
 
-  (testing "defn anonymous calls"
+  (testing "fn* anonymous calls"
     (assert-eq ((fn* [])) (values))
     (assert-eq ((fn* [] nil)) nil)
     (assert-eq ((fn* [x] x) 5) 5)

@@ -675,6 +675,7 @@ accepts sorting function `f`. "
 
 (eval-compiler
 (local lib-name (or :lazy-seq))
+
   (fn lazy-seq [...]
     "Create lazy sequence from the result provided by running the `body'.
 Delays the execution until the resulting sequence is consumed.
@@ -1875,8 +1876,7 @@ called. Early termination is supported via `reduced`.
 ;;; cljlib
 
 (eval-compiler
-  (local lib-name
-    (or ... :cljlib))
+  (local lib-name (or ... :cljlib))
 
   (fn string? [x]
     (= :string (type x)))

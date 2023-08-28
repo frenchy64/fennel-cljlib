@@ -1,0 +1,4 @@
+;; -*- mode: fennel -*-
+
+{:reporter :dots
+ :searcher-opts {:useMetadata true}}
