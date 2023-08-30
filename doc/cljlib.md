@@ -154,6 +154,7 @@ Another difference is that Lua 5.2 and LuaJIT don't have an inbuilt UTF-8 librar
 - [`iterate`](#iterate)
 - [`keep`](#keep)
 - [`keep-indexed`](#keep-indexed)
+- [`lazy-seq*`](#lazy-seq-1)
 - [`line-seq`](#line-seq)
 - [`list`](#list)
 - [`list*`](#list-1)
@@ -2051,6 +2052,18 @@ Returns a lazy sequence of the non-nil results of (f index item) in
 the `coll`.  Note, this means false return values will be included.
 `f` must be free of side effects. Returns a transducer when no
 collection is provided.
+
+## `lazy-seq*`
+Function signature:
+
+```
+(lazy-seq* [f])
+```
+
+Create lazy sequence from the result of calling a function `f`.
+Delays execution of `f` until sequence is consumed.  `f` must return a
+sequence or a vector.  There's a convenience macro [`lazy-seq`](#lazy-seq)
+automates the process of function creation.
 
 ## `line-seq`
 Function signature:

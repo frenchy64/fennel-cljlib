@@ -1778,10 +1778,11 @@ Lua `#` operator on `rev` takes linar time.  If `t` is empty returns
   [rev]
   (seq* (lazy.rseq rev)))
 
-(defn lazy-seq
+(defn lazy-seq*
   "Create lazy sequence from the result of calling a function `f`.
 Delays execution of `f` until sequence is consumed.  `f` must return a
-sequence or a vector."
+sequence or a vector.  There's a convenience macro `lazy-seq'
+automates the process of function creation."
   [f]
   (seq* (lazy.lazy-seq f)))
 
@@ -2698,7 +2699,7 @@ number-of-colls arguments"
             (if-some [s (seq coll)]
               (let [res (f nil (first s))]
                 (cond (reduced? res) (f (deref res))
-                      (seq? res) (concat res (lazy-seq #(step (rest s))))
+                      (seq? res) (concat res (lazy-seq* #(step (rest s))))
                       :else (step (rest s))))
               (f nil)))
           coll)
@@ -2709,7 +2710,7 @@ number-of-colls arguments"
             (if (every? seq colls)
                 (let [res (apply f nil (map first colls))]
                   (cond (reduced? res) (f (deref res))
-                        (seq? res) (concat res (lazy-seq #(step (map rest colls))))
+                        (seq? res) (concat res (lazy-seq* #(step (map rest colls))))
                         :else (step (map rest colls))))
                 (f nil)))
           (cons coll colls))
