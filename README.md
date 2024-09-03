@@ -37,13 +37,13 @@ Please make sure you've read [contribution guidelines][4].
 
 In order to work on the library, edit the `src/cljlib.fnl` file, then run the following command in the project root:
 
-    fennel utils/build
+    fennel tasks/build
 
 This produces a self-contained version of the library with all dependencies properly included.
 
 Tests can be ran with:
 
-    fennel utils/run-tests
+    fennel tasks/run-tests
 
 [1]: https://gitlab.com/andreyorst/fennel-cljlib/-/raw/master/cljlib.fnl
 [2]: https://gitlab.com/andreyorst/fenneldoc

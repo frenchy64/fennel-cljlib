@@ -1,0 +1,27 @@
+name: test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout
+
+    - uses: xpol/setup-lua@v1
+      with:
+        lua-version: "5.1.5"
+
+    - name: Installe Fennel
+      run: |
+        wget https://fennel-lang.org/downloads/fennel-1.5.1
+        chmod +x fennel-1.5.1
+        mv fennel-1.5.1 fennel
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+        mv fennel "$HOME/.local/bin"
+
+    - name: test
+      run: |
+        fennel tasks/build
+        fennel tasks/run-tests
