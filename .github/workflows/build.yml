@@ -18,10 +18,8 @@ jobs:
         wget https://fennel-lang.org/downloads/fennel-1.5.1
         chmod +x fennel-1.5.1
         mv fennel-1.5.1 fennel
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
-        mv fennel "$HOME/.local/bin"
 
     - name: test
       run: |
-        fennel tasks/build
-        fennel tasks/run-tests
+        ./fennel tasks/build
+        ./fennel tasks/run-tests
