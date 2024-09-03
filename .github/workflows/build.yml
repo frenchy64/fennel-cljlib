@@ -9,11 +9,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - uses: xpol/setup-lua@v1
-      with:
-        lua-version: "5.1.5"
+    - run: sudo apt install lua5.3
 
-    - name: Installe Fennel
+    - name: Install Fennel
       run: |
         wget https://fennel-lang.org/downloads/fennel-1.5.1
         chmod +x fennel-1.5.1
